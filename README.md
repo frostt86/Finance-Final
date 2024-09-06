@@ -38,10 +38,7 @@ A web-based Personal Finance Tracker application that allows users to track thei
 1. Create a MySQL database for the project.
 2. Name the MySQL as "finance"
 3. Update the `application.properties` file with your MySQL username, password, and database URL. (username - root , password -)
-###Build and Run the project:
-   ```bash
-   mvn clean install
-   mvn spring-boot:run
+4. Run the application using your IDE
    
 ### Access the application:
 - Open your browser and go to [http://localhost:8080](http://localhost:8080/Finance/Login).
