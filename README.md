@@ -32,16 +32,12 @@ A web-based Personal Finance Tracker application that allows users to track thei
 - Maven
 - MySQL
 
-### Steps to Set Up
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   cd finance-tracker
 ## Installation
 
 ### Configure the MySQL database:
 1. Create a MySQL database for the project.
-2. Update the `application.properties` file with your MySQL username, password, and database URL.
+2. Name the MySQL as "finance"
+3. Update the `application.properties` file with your MySQL username, password, and database URL. (username - root , password -)
 ###Build and Run the project:
    ```bash
    mvn clean install
@@ -60,28 +56,28 @@ A web-based Personal Finance Tracker application that allows users to track thei
 ### ScreenShots
 
 ### Login
-![Login page](screenshots\Screenshot 2024-09-06 124702.png)
+![Login page](screenshots/Screenshot 2024-09-06 124702.png)
 
 ### Register 
-![Register Screen](screenshots\Screenshot 2024-09-06 124713.png)
+![Register Screen](screenshots/Screenshot 2024-09-06 124713.png)
 
 ### Dashboard
-![Dashboard](screenshots\Screenshot 2024-09-06 124738.png)
-![Dashboard 2](screenshots\Screenshot 2024-09-06 124743.png)
+![Dashboard](screenshots/Screenshot 2024-09-06 124738.png)
+![Dashboard 2](screenshots/Screenshot 2024-09-06 124743.png)
 
 ### Transaction Entry
-![Entry](screenshots\Screenshot 2024-09-06 124758.png)
+![Entry](screenshots/Screenshot 2024-09-06 124758.png)
 
 ### Category manage
-![Manage](screenshots\Screenshot 2024-09-06 124805.png)
+![Manage](screenshots/Screenshot 2024-09-06 124805.png)
 
 ### Transaction history
-![History](screenshots\Screenshot 2024-09-06 124813.png)
+![History](screenshots/Screenshot 2024-09-06 124813.png)
 
 ### Resized Models for mobile
-![Mobile1](screenshots\Screenshot 2024-09-06 124833.png)
-![Mobile2](screenshots\Screenshot 2024-09-06 124855.png)
-![Mobile3](screenshots\Screenshot 2024-09-06 124901.png)
-![Mobile4](screenshots\Screenshot 2024-09-06 124912.png)
-![Mobile5](screenshots\Screenshot 2024-09-06 124921.png)
+![Mobile1](screenshots/Screenshot 2024-09-06 124833.png)
+![Mobile2](screenshots/Screenshot 2024-09-06 124855.png)
+![Mobile3](screenshots/Screenshot 2024-09-06 124901.png)
+![Mobile4](screenshots/Screenshot 2024-09-06 124912.png)
+![Mobile5](screenshots/Screenshot 2024-09-06 124921.png)
 
