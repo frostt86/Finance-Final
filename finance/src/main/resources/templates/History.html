@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction History</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: url(https://wallpapers.com/images/hd/dark-purple-abstract-art-1cokurhn25i7jg0e.jpg) no-repeat center center fixed;
+            background-size: cover;
+            color:  #bb86fc;
+            font-family: 'Poppins', sans-serif;
+        }
+        label {
+            font-weight: bold;
+        }
+        .card {
+            background: rgba(78, 24, 90, 0.42);
+            backdrop-filter: blur(20px);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            color: #b078f6;
+            font-size: 15px;
+            border-radius: 15px;
+        }
+        .navbar {
+            background-color: #000000;
+        }
+        .nav-link {
+            color: #ffffff !important;
+        }
+        .nav-link:hover {
+            color: #bb86fc !important;
+        }
+        h1 {
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+        .filter-label {
+            color: #bb86fc;
+        }
+        .btn {
+            background-color: #8500f4;
+            color: white;
+            border: none;
+        }
+        .btn:hover {
+            background-color: #8500f4;
+            box-shadow: 0 0 15px rgba(106, 17, 203, 1), 0 0 30px rgba(106, 17, 203, 1);
+            color: white;
+        }
+        .table-striped > tbody > tr:nth-of-type(odd) {
+            background-color: #2a2a2a;
+        }
+        .table-striped > tbody > tr:nth-of-type(even) {
+            background-color: #1d1d1d;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark ">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/Finance/Dashboard">Finance Tracker</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/Finance/Dashboard">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Finance/Entry">Transactions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Finance/Manage">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/Finance/History">Transaction History</a>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <button class="btn btn-outline-light" type="submit">Account</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Transaction History</h1>
+
+    <div class="row mb-4">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                            <label for="startDate" class="form-label filter-label">Start Date:</label>
+                            <input type="date" class="form-control" id="startDate" name="startDate">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="endDate" class="form-label filter-label">End Date:</label>
+                            <input type="date" class="form-control" id="endDate" name="endDate">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="transactionType" class="form-label filter-label">Transaction Type:</label>
+                            <select id="transactionType" name="transactionType" class="form-select">
+                                <option value="">All</option>
+                                <option value="income">Income</option>
+                                <option value="expense">Expense</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="category" class="form-label filter-label">Category:</label>
+                            <select id="category" name="category" class="form-select">
+                                <option value="">All</option>
+
+                                <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}">Category</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-filter">Filter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-striped text-white">
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Type</th>
+                            <th>Category</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="transaction : ${transactions}">
+                            <td th:text="${#temporals.format(transaction.transactionDate, 'yyyy-MM-dd')}"></td>
+                            <td th:text="${transaction.description}">Sample Description</td>
+                            <td th:text="${transaction.amount}">0.00</td>
+                            <td th:text="${transaction.transactionType}">Income</td>
+                            <td th:text="${transaction.category.name}">Category</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
